@@ -22,9 +22,9 @@ module.exports = () => {
       NEXT_PUBLIC_DESCRIPTION:
         process.env.NEXT_PUBLIC_DESCRIPTION || process.env.RAZZLE_DESCRIPTION,
     },
-    experimental: {
-      reactMode: 'concurrent',
-    },
+    //experimental: {
+    //  reactMode: 'concurrent',
+    //},
     async rewrites() {
       return [
         {
