@@ -64,7 +64,7 @@ export const PostRoot = ({issueNumber}: {issueNumber: number}) => {
     {fetchPolicy: 'store-and-network'},
   );
     
-  console.log('data', data);œ
+  console.log('data', data);
 
   if (!data) {
     return null;
