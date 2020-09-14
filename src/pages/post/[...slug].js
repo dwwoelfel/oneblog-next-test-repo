@@ -41,6 +41,7 @@ async function findMediumRedirect(path): Promise<?number> {
 }
 
 export async function getStaticProps(context: any) {
+  console.log('getStaticProps', context);
   const slug = context.params.slug;
   const path = slug[slug.length - 1];
   const mediumRedirectIssueNumber = await findMediumRedirect(path);
@@ -57,7 +58,9 @@ export async function getStaticProps(context: any) {
     return {props: {}};
   }
   const environment = createEnvironment();
+  console.log('fetchQuery');
   await fetchQuery(environment, query, {issueNumber});
+  console.log('fetched Query');
   return {
     revalidate: 600,
     props: {
@@ -79,6 +82,7 @@ export async function getStaticPaths() {
 }
 
 const Page = ({issueNumber: staticIssueNumber}: {issueNumber: ?number}) => {
+  console.log('rendering', staticIssueNumber);
   const {
     query: {slug},
   } = useRouter();
@@ -89,6 +93,8 @@ const Page = ({issueNumber: staticIssueNumber}: {issueNumber: ?number}) => {
   if (!issueNumber) {
     return null;
   }
+  
+  console.log('here');
 
   return <PostRoot issueNumber={issueNumber} />;
 };
