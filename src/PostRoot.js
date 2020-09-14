@@ -57,11 +57,14 @@ export const query = graphql`
 `;
 
 export const PostRoot = ({issueNumber}: {issueNumber: number}) => {
+  console.log('PostRoot', issueNumber);
   const data: ?PostRoot_PostQueryResponse = useLazyLoadQuery<PostRoot_PostQuery>(
     query,
     {issueNumber},
     {fetchPolicy: 'store-and-network'},
   );
+    
+  console.log('data', data);œ
 
   if (!data) {
     return null;
